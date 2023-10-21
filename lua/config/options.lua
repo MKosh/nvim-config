@@ -5,4 +5,4 @@
 
 vim.g.autoformat = false
 vim.o.colorcolumn = "80,120"
-
+vim.o.guifont = "JetBrainsMono Nerd Font Mono"

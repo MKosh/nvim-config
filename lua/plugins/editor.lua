@@ -33,4 +33,8 @@ return {
     },
     main = "ibl",
   },
+
+  {
+    "ThePrimeagen/harpoon",
+  }
 }
