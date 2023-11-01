@@ -13,6 +13,8 @@ return {
     opts = {
       defaults = {
         ["<leader>h"] = { name = "+harpoon" },
+        ["<leader>gh"] = { name = "+hunks"},
+        ["<leader>m"] = { name = "+make"},
       },
       window = {
         border = "double",
@@ -55,4 +57,5 @@ return {
       },
     },
   },
+
 }

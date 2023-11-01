@@ -3,3 +3,4 @@
 -- Add any additional autocmds here
 
 vim.cmd('autocmd! TermOpen term:://* lua set_terminal_keymaps()')
+vim.cmd('autocmd BufEnter * tcd %:p:h')
