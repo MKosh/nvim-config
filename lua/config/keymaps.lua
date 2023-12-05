@@ -10,11 +10,18 @@ vim.keymap.set("n", "<leader>bc", ":bd<cr>",             { silent = true, desc =
 vim.keymap.set("n", "<leader>bj", ":BufferLinePick<cr>", { silent = true, desc = "Jump to" })
 vim.keymap.set("n", "<leader>bs", ":w<CR>",              { silent = true, desc = "Save buffer"})
 
+-- ---------------------------------------------------------------------------------------------------------------------
+-- Window size
+vim.keymap.set('n', '<M-Down>',   '<C-w>-',               { silent = true, desc = 'Decrease window height'})
+vim.keymap.set('n', '<M-Up>',     '<C-w>+',               { silent = true, desc = 'Increase window height'})
+vim.keymap.set('n', '<M-Left>',   '<C-w><',               { silent = true, desc = 'Decrease window width'})
+vim.keymap.set('n', '<M-Right>',  '<C-w>>',               { silent = true, desc = 'Increase window width'})
+
 -- -----------------------------------------------------------------------------
 -- ToggleTerm
-vim.keymap.set("n", "<M-1>", ":ToggleTerm size = 10 direction=horizontal<CR>", { silent = true, desc = "Open horizontal terminal"})
-vim.keymap.set("n", "<M-2>", ":ToggleTerm size = 80 direction=vertical<CR>",   { silent = true, desc = "Open vertical terminal"})
-vim.keymap.set("n", "<M-3>", ":ToggleTerm size = 30 direction=float<CR>",      { silent = true, desc = "Open floating terminal"})
+vim.keymap.set("n", "<M-1>", ":ToggleTerm size=10 direction=horizontal<CR>", { silent = true, desc = "Open horizontal terminal"})
+vim.keymap.set("n", "<M-2>", ":ToggleTerm size=120 direction=vertical<CR>",   { silent = true, desc = "Open vertical terminal"})
+vim.keymap.set("n", "<M-3>", ":ToggleTerm size=30 direction=float<CR>",      { silent = true, desc = "Open floating terminal"})
 vim.keymap.set('t', '<esc>', [[<C-\><C-n>]],            { silent = true, desc = 'Exit terminal'})
 vim.keymap.set('t', 'jk',    [[<C-\><C-n>]],            { silent = true, desc = 'Exit terminal'})
 vim.keymap.set('t', '<C-j>', [[<cmd>wincmd j<CR>]],     { silent = true, desc = 'Move window down'})
@@ -56,10 +63,17 @@ vim.keymap.set('n', '<leader>mh', ':silent :! hmake all && hmake install<cr>', {
 vim.keymap.set('n', '<leader>ml', ':! hmake all && hmake install<cr>',         { silent = true, desc = 'hmake all & install (loud)'})
 
 -- -----------------------------------------------------------------------------
---
--- vim.keymap.del('n', '<leader>e')
--- vim.keymap.del('n', '<leader>E')
--- vim.keymap.set('n', '<leader>E', function() require("neo-tree.command").execute({toggle = true, dir = require("lazyvim.util").root()}) end, { silent = true, desc = "Explorer (my root dir)"})
--- vim.keymap.set('n', '<leader>e', function() require("neo-tree.command").execute({toggle = true, dir = vim.loop.cwd()}) end, { silent = true, desc = "Explorer (my cwd)"})
--- vim.keymap.set('n', '<leader>ec', function() require("neo-tree.command").execute({toggle = true, reveal_path = "%:p"}) end, { silent = true, desc = "Explorer (current dir)" })
--- vim.keymap.del('n', '<leader>e')
+-- Dap
+vim.keymap.set('n', '<C-n>', function() require('dap').step_over() end, { silent = true, desc = 'Dap - step over' })
+vim.keymap.set('n', '<C-s>', function() require('dap').step_into() end, { silent = true, desc = 'Dap - step into' })
+vim.keymap.set('n', '<C-o>', function() require('dap').step_out() end,  { silent = true, desc = 'Dap - step out' })
+vim.keymap.set('n', '<C-c>', function() require('dap').continue() end,  { silent = true, desc = 'Dap - continue' })
+vim.keymap.set('n', '<leader>dm', function() require('dap').list_breakpoints(true) end, { silent = true, desc = 'List breakpoints'})
+
+
+-- vim.keymap.set('n', '<leader>dm', function() require('nvim-dap-projects').search_project_config() end, {silent = true, desc = 'Search config'})
+
+-- vim.keymap.set('n', '<leader>d/', require('telescope').extensions.dap.list_breakpoints{}, {silent = true, desc = 'List breakpoints'})
+-- vim.keymap.set('n', '<leader>df', require('telescope').extensions.dap.frames{},           {silent = true, desc = 'frames'})
+-- vim.keymap.set('n', '<leader>d/', ':Telescope dap list_breakpoints<CR>', {silent = true, desc = 'List breakpoints'})
+-- vim.keymap.set('n', '<leader>df', ':Telescope dap frames<CR>',           {silent = true, desc = 'frames'})

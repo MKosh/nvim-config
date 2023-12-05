@@ -13,7 +13,8 @@ return {
       indent = {
         -- char = "│▏",
         char = "▏",
-        tab_char = "│",
+        -- tab_char = "▏",
+        -- tab_char = "│",
       },
       scope = { enabled = false },
       exclude = {
@@ -36,5 +37,13 @@ return {
 
   {
     "ThePrimeagen/harpoon",
-  }
+  },
+
+  {
+    "benlubas/molten-nvim",
+    version = "^1.0.0",
+    build = ":UpdateRemotePlugins",
+    init = function ()
+    end,
+  },
 }
