@@ -70,6 +70,18 @@ vim.keymap.set('n', '<C-o>', function() require('dap').step_out() end,  { silent
 vim.keymap.set('n', '<C-c>', function() require('dap').continue() end,  { silent = true, desc = 'Dap - continue' })
 vim.keymap.set('n', '<leader>dm', function() require('dap').list_breakpoints(true) end, { silent = true, desc = 'List breakpoints'})
 
+-- -----------------------------------------------------------------------------
+-- Oil
+-- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory'})
+-- vim.keymap.set('n',vim.keymap.set("n", --[[ your key combo --]], function()
+-- vim.cmd("vsplit | wincmd l")
+--   require("oil").open()
+-- end) '<leader>of', "<CMD>lua require('oil').toggle_float('.')<CR>", { desc = 'Open Oil floating'})
+
+-- -----------------------------------------------------------------------------
+-- Mini.Files
+vim.keymap.set('n', '-', function() if not require('mini.files').close() then require('mini.files').open() end end, { desc = "Open Mini.Files"})
+
 
 -- vim.keymap.set('n', '<leader>dm', function() require('nvim-dap-projects').search_project_config() end, {silent = true, desc = 'Search config'})
 

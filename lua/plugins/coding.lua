@@ -1,5 +1,14 @@
 return {
   {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    opts = {
+      config = {
+        cpp = "// %s",
+      },
+    },
+  },
+
+  {
     "mfussenegger/nvim-dap",
     config = function()
     local Config = require("lazyvim.config")

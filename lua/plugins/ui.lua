@@ -110,6 +110,29 @@ return {
     end,
   },
 
+  -- {
+  --   "stevearc/oil.nvim",
+  --   opts = {
+  --     float = {
+  --       padding = 2,
+  --       border = "rounded",
+  --       max_width = 0,
+  --       max_height = 0,
+  --       -- win_options = {
+  --       --   winblend = 0,
+  --       -- },
+  --     },
+  --   },
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  -- },
+  {
+    'echasnovski/mini.files',
+    version = false,
+    opts = {},
+  },
+
   {
     "hrsh7th/nvim-cmp",
     opts = {
