@@ -41,6 +41,8 @@ vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev,   { desc = "Ha
 vim.keymap.set('n', '<leader>hd', require('harpoon.mark').rm_file,  { desc = "Harpoon remove"})
 vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>',   { silent = true, desc = "Harpoon marks"})
 
+vim.keymap.set('n', 'dm', ':delmarks ', {desc = "Delete marks"})
+
 -- -----------------------------------------------------------------------------
 -- Telescope
 vim.keymap.set('n', '<leader>s/', function()

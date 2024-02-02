@@ -5,7 +5,7 @@
 
 vim.g.autoformat = false
 vim.o.colorcolumn = "80,120"
-vim.o.guifont = "JetBrainsMono Nerd Font Mono:h13"
+vim.o.guifont = "JetBrainsMono Nerd Font Mono:h16"
 vim.g.neovide_input_macos_alt_is_meta = true
 vim.o.autochdir = true
 -- vim.opt.autochdir = true
