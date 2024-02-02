@@ -1,4 +1,14 @@
 return {
+  {
+    "tikhomirov/vim-glsl"
+  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     require('lspconfig').glsl_analyzer.setup{}
+  --   },
+  -- },
+
   -- "neovim/nvim-lspconfig",
   -- opts = {
   --   inlay_hints = {

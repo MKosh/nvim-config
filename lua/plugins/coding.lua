@@ -1,9 +1,18 @@
 return {
   {
+    'echasnovski/mini.comment',
+    opts = {
+
+    },
+  },
+
+
+  {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = {
-      config = {
-        cpp = "// %s",
+      languages = {
+        cpp = {__default = "// %s", __multiline = '/* %s */'},
+        glsl = "// %s",
       },
     },
   },
