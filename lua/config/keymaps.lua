@@ -85,6 +85,19 @@ vim.keymap.set('n', '<leader>dm', function() require('dap').list_breakpoints(tru
 vim.keymap.set('n', '-', function() if not require('mini.files').close() then require('mini.files').open() end end, { desc = "Open Mini.Files"})
 
 require('lspconfig').glsl_analyzer.setup{}
+
+require('telescope').setup{
+  defaults = {
+    mappings = {
+      n = {
+        ['d'] = require('telescope.actions').delete_buffer
+      },
+      i = {
+        ['<C-d>'] = require('telescope.actions').delete_buffer
+      }
+    }
+  }
+}
 -- vim.keymap.set('n', '<leader>dm', function() require('nvim-dap-projects').search_project_config() end, {silent = true, desc = 'Search config'})
 
 -- vim.keymap.set('n', '<leader>d/', require('telescope').extensions.dap.list_breakpoints{}, {silent = true, desc = 'List breakpoints'})
