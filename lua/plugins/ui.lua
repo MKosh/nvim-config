@@ -1,5 +1,13 @@
 return {
-  "Mofiqul/vscode.nvim",
+  {
+    "ellisonleao/gruvbox.nvim",
+    priority = 1000,
+  },
+
+  {
+    "Mofiqul/vscode.nvim",
+    priority = 1001,
+  },
 
   {
     "LazyVim/LazyVim",
