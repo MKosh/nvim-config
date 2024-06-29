@@ -32,15 +32,6 @@ vim.keymap.set('t', '<M-1>', [[<cmd>ToggleTerm<cr>]],   { silent = true, desc = 
 vim.keymap.set('t', '<M-2>', [[<cmd>ToggleTerm<cr>]],   { silent = true, desc = 'Open vertical terminal'})
 vim.keymap.set('t', '<M-3>', [[<cmd>ToggleTerm<cr>]],   { silent = true, desc = 'Open floating terminal'})
 
-
--- -----------------------------------------------------------------------------
--- Harpoon
-vim.keymap.set('n', '<leader>hx', require('harpoon.mark').add_file, { desc = "Harpoon mark"})
-vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next,   { desc = "Harpoon next"})
-vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev,   { desc = "Harpoon prev"})
-vim.keymap.set('n', '<leader>hd', require('harpoon.mark').rm_file,  { desc = "Harpoon remove"})
-vim.keymap.set('n', '<leader>hm', ':Telescope harpoon marks<CR>',   { silent = true, desc = "Harpoon marks"})
-
 vim.keymap.set('n', 'dm', ':delmarks ', {desc = "Delete marks"})
 
 -- -----------------------------------------------------------------------------

@@ -1,12 +1,12 @@
 return {
   {
     "ellisonleao/gruvbox.nvim",
-    priority = 1000,
+    -- priority = 1000,
   },
 
   {
     "Mofiqul/vscode.nvim",
-    priority = 1001,
+    -- priority = 1001,
   },
 
   {

@@ -17,6 +17,31 @@ return {
     },
   },
 
+  -- {
+  --   "rcarriga/nvim-dap-ui",
+  --   dependencies = { "nvim-neotest/nvim-nio" },
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+  --     { "<leader>de", function() require("dapui").eval() end, desc = "Eval", mode = {"n", "v"} },
+  --   },
+  --   opts = {},
+  --   config = function(_, opts)
+  --     local dap = require("dap")
+  --     local dapui = require("dapui")
+  --     dapui.setup(opts)
+  --     dap.listeners.after.event_initialized["dapui_config"] = function()
+  --       dapui.open({})
+  --     end
+  --     dap.listeners.before.event_terminated["dapui_config"] = function()
+  --       dapui.close({})
+  --     end
+  --     dap.listeners.before.event_exited["dapui_config"] = function()
+  --       dapui.close({})
+  --     end
+  --   end,
+  -- },
+
   {
     "mfussenegger/nvim-dap",
     config = function()
@@ -31,14 +56,32 @@ return {
       )
     end
     local dap = require('dap')
+
     dap.adapters.lldb = {
       type = 'executable',
-      command = '/usr/bin/lldb-vscode',
+      -- command = '/usr/bin/lldb-vscode',
+      command = '/opt/local/bin/lldb-vscode-mp-15',
       name = 'lldb',
     }
+
+    dap.adapters.cpptools = {
+      type = 'executable',
+      command = '/Users/mmekosh/.local/share/nvim/mason/bin/OpenDebugAD7',
+      name = 'cpptools',
+    }
+
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = "${port}",
+      executable = {
+        command = '/Users/mmekosh/.local/share/nvim/mason/bin/codelldb',
+        args = {"--port", "${port}"},
+      }
+    }
+
     dap.configurations.cpp = {
       {
-        name = "Launch file",
+        name = "Launch",
         type = "codelldb",
         request = "launch",
         program = function()
@@ -47,97 +90,29 @@ return {
         cwd = '${workspaceFolder}',
         stopOnEntry = false,
         args = {
-          'infile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/data/obs/000122000/xtend/event_uf/xa000122000xtd_a0exp.fits.gz',
-          'outfile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/test_out/output/xa000122000xtd_a0exp.fits.tmp',
-          'timfile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/data/obs/000122000/auxil/xa000122000.tim.gz',
-          'lookupfile=NONE',
-          'leapsecfile=CALDB',
-          'coldeffile=CALDB',
-          'delayfile=CALDB',
-          'timecol=TIME',
-          'gticolumns=START,STOP',
-          'calctime=yes',
-          'calcutc=yes',
-          'writekeys=yes',
-          'interp=TWOPOINT',
-          'buffer=-1',
+          'outfileroot=/Users/mmekosh/xrism/temp/rslrmf_crash/rsl_loc_rmfbm01_X_px0_Hp_big',
+          'whichrmf=X',
+          'pixel=0',
+          'resol=Hp',
+          'infile=NONE',
+          'rmfparamfile=CALDB',
+          'chatter=3',
           'clobber=yes',
-          'chatter=1',
-          'logfile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/test_out/output/xatime_out.log',
-          'debug=no',
-          'history=yes',
-          'mode=ql'
-          -- 'infile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/data/obs/000122000/xtend/event_uf/xa000122000xtd_a0exp.fits.gz',
-          -- 'outfile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/test_out/output/xa000122000xtd_a0exp.fits.tmp',
-          -- 'timfile=/Users/mmekosh/XRISM/docs/resources/xatime/xrism_V01_mmm_xatime_gap/data/obs/000122000/auxil/xa000122000.tim.gz',
-          -- 'lookupfile=NONE',
-          -- 'leapsecfile=CALDB',
-          -- 'coldeffile=CALDB',
-          -- 'delayfile=CALDB',
-          -- 'timecol=TIME',
-          -- 'gticolumns=START,STOP',
-          -- 'calctime=yes',
-          -- 'calcutc=yes',
-          -- 'writekeys=yes',
-          -- 'interp=TWOPOINT',
-          -- 'buffer=-1',
-          -- 'clobber=yes',
-          -- 'chatter=1',
-          -- 'logfile=!DEFAULT',
-          -- 'debug=no',
-          -- 'history=yes',
-          -- 'mode=ql'
-          -- 'infile=/Users/mmekosh/XRISM/docs/resources/rslflagpix/test_out/test0.out',
-          -- 'inantfile=/Users/mmekosh/XRISM/docs/resources/rslflagpix/data/xa093109000rsl_a0ac_uf.evt.gz',
-          -- 'outfile=/Users/mmekosh/XRISM/docs/resources/rslflagpix/test_out/test1.out',
-          -- 'antpsp=A',
-          -- 'checkpsp=YES',
-          -- 'antshift=CALDB',
-          -- 'gtifile=NONE',
-          -- 'calcant=YES',
-          -- 'antdtpre=CALDB',
-          -- 'antdtfol=CALDB',
-          -- 'antphathr=71',
-          -- 'antdurthr=2',
-          -- 'calcctrec=YES',
-          -- 'ctrecdt=0.00024',
-          -- 'calcprox=YES',
-          -- 'proxdt=0.00072',
-          -- 'calcctel=YES',
-          -- 'pixdeffile=CALDB',
-          -- 'cteldt=CALDB',
-          -- 'ctelnear=1',
-          -- 'calcctel2=NO',
-          -- 'cteldt2=CALDB',
-          -- 'ctelnear2=1',
-          -- 'pxpithr="600 600 600 600"',
-          -- 'usepxpithr=ALL',
-          -- 'pharatiothr=50.0',
-          -- 'calcmxs=NO',
-          -- 'inmxsgti=gti.fits',
-          -- 'inmxsnoglogti=NONE',
-          -- 'kalow=5860.',
-          -- 'kahigh=5930.',
-          -- 'kblow=6450.',
-          -- 'kbhigh=6520.',
-          -- 'dtflag=NO',
-          -- 'ckrisetime=YES',
-          -- 'resetflags=NONE',
-          -- 'clobber=yes',
-          -- 'chatter=3',
-          -- 'logfile=/Users/mmekosh/XRISM/docs/resources/rslflagpix/test_out/test1.log'
+          'debug=yes',
+          'logfile=/Users/mmekosh/xrism/temp/rslrmf_crash/rsl_loc_rmfbm01_X_px0_Hp_big.log'
         },
       },
     }
+    local env = function()
+      local variables = {}
+      for k, v in pairs(vim.fn.environ()) do
+        table.insert(variables, string.format("%s=%s", k, v))
+      end
+      return variables
+    end
   end,
   },
 
-  -- {
-  --   'ldelossa/nvim-dap-projects',
-  --   config = function()
-  --     require('nvim-dap-projects').config_paths = {'/Users/mmekosh/XRISM/heasoft/nvim-dap.lua'}
-  --   end
-  -- },
 
   {
     'stevearc/aerial.nvim',
